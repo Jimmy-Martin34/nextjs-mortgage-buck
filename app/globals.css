@@ -1,15 +1,16 @@
-@import "tailwindcss";
+/* Tailwind v3 directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* Your design tokens (plain CSS vars) */
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* add more vars as you need, e.g.:
+  --primary: #111827;
+  --primary-foreground: #ffffff;
+  */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +20,10 @@
   }
 }
 
+/* Base styles */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Fonts come from next/font via CSS vars set in layout.tsx:
+     --font-sans and --font-mono (already wired in tailwind.config.ts) */
 }
