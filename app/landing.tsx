@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Upload from "@/components/Upload";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+
+// ⬇️ use relative paths to your components inside app/components/...
+import Upload from "./components/Upload";
+import { Button } from "./components/ui/button";
+import { Card, CardContent } from "./components/ui/card";
 
 type Feature = {
   icon: string;
@@ -14,7 +16,7 @@ type Feature = {
 
 export default function Landing() {
   const router = useRouter();
-  const [showAdminLogin, setShowAdminLogin] = useState(false); // if you plan to use later
+  const [showAdminLogin] = useState(false); // kept for future use
 
   const features: Feature[] = [
     {
@@ -73,102 +75,5 @@ export default function Landing() {
             <nav className="hidden items-center space-x-6 md:flex">
               <a
                 href="#features"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                Features
-              </a>
-              <a
-                href="#how-it-works"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                How It Works
-              </a>
-              <a
-                href="#security"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                Security
-              </a>
-              <Button
-                onClick={() => router.push("/admin")}
-                data-testid="button-admin-login"
-              >
-                Admin Login
-              </Button>
-            </nav>
+                className="text-muted-fore
 
-            <button className="text-muted-foreground md:hidden">
-              <i className="fas fa-bars text-lg" />
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {/* Hero */}
-      <section className="px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl text-center">
-          <h1 className="mb-6 text-4xl font-bold text-foreground md:text-6xl">
-            Stop Overpaying on Your
-            <span className="text-primary"> Mortgage</span>
-          </h1>
-          <p className="mx-auto mb-8 max-w-2xl text-xl text-muted-foreground">
-            Upload your Loan Estimate or Closing Disclosure and get instant
-            analysis showing exactly where you're overpaying and how to fix it.
-          </p>
-
-          {/* Trust Indicators */}
-          <div className="mb-12 flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
-            <div className="flex items-center gap-2">
-              <i className="fas fa-shield-alt text-success" />
-              <span>Bank-level security</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <i className="fas fa-clock text-primary" />
-              <span>Results in 15 seconds</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <i className="fas fa-file-pdf text-warning" />
-              <span>No email required</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Upload */}
-      <section className="bg-secondary/50 px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl">
-          <Upload />
-        </div>
-      </section>
-
-      {/* Features */}
-      <section id="features" className="px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-16 text-center">
-            <h2 className="mb-4 text-3xl font-bold text-foreground">
-              How We Help You Save
-            </h2>
-            <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-              Our analyzer identifies specific areas where you might be
-              overpaying and provides actionable solutions
-            </p>
-          </div>
-
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature, idx) => (
-              <Card key={idx} className="transition-shadow hover:shadow-lg">
-                <CardContent className="p-6">
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                    <i className={`${feature.icon} text-xl text-primary`} />
-                  </div>
-                  <h3 className="mb-2 text-lg font-semibold">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
