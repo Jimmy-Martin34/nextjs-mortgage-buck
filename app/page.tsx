@@ -1,5 +1,6 @@
-import landing from "./landing";
+// app/page.tsx
+import Landing from "./landing";
 
 export default function Page() {
-  return <landing />;
+  return <Landing />;
 }
